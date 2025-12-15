@@ -36,6 +36,47 @@ class OyunlarActivity : AppCompatActivity() {
             setPadding(16, 16, 16, 16)
         }
         
+        // Add Quiz button at the top
+        val quizButton = androidx.cardview.widget.CardView(this).apply {
+            layoutParams = LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT
+            ).apply {
+                setMargins(0, 0, 0, 24)
+            }
+            radius = 12f
+            cardElevation = 8f
+            setCardBackgroundColor(resources.getColor(R.color.colorAccent, null))
+            
+            val buttonLayout = LinearLayout(context).apply {
+                orientation = LinearLayout.VERTICAL
+                setPadding(32, 32, 32, 32)
+                gravity = android.view.Gravity.CENTER
+                
+                addView(TextView(context).apply {
+                    text = "🎯 Bilgi Yarışması Oyna"
+                    textSize = 22f
+                    setTextColor(resources.getColor(android.R.color.white, null))
+                    gravity = android.view.Gravity.CENTER
+                })
+                
+                addView(TextView(context).apply {
+                    text = "Sorulara cevap ver ve puan kazan!"
+                    textSize = 14f
+                    setTextColor(resources.getColor(android.R.color.white, null))
+                    gravity = android.view.Gravity.CENTER
+                    setPadding(0, 8, 0, 0)
+                })
+            }
+            
+            addView(buttonLayout)
+            
+            setOnClickListener {
+                startActivity(android.content.Intent(context, QuizActivity::class.java))
+            }
+        }
+        layout.addView(quizButton)
+        
         // Load games from JSON
         val games = loadGamesFromAssets()
         
