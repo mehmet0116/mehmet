@@ -79,6 +79,86 @@
       "options": ["2", "3", "4", "5"],
       "correctAnswer": 1,
       "difficulty": "medium"
+    },
+    {
+      "id": 11,
+      "category": "math",
+      "question": "6 + 4 = ?",
+      "options": ["8", "9", "10", "11"],
+      "correctAnswer": 2,
+      "difficulty": "easy"
+    },
+    {
+      "id": 12,
+      "category": "language",
+      "question": "Kaç harf var alfabede?",
+      "options": ["26", "27", "28", "29"],
+      "correctAnswer": 3,
+      "difficulty": "medium"
+    },
+    {
+      "id": 13,
+      "category": "science",
+      "question": "Güneş ne zaman doğar?",
+      "options": ["Sabah", "Öğle", "Akşam", "Gece"],
+      "correctAnswer": 0,
+      "difficulty": "easy"
+    },
+    {
+      "id": 14,
+      "category": "math",
+      "question": "7 - 2 = ?",
+      "options": ["3", "4", "5", "6"],
+      "correctAnswer": 2,
+      "difficulty": "easy"
+    },
+    {
+      "id": 15,
+      "category": "cognitive",
+      "question": "Karenin kaç kenarı vardır?",
+      "options": ["2", "3", "4", "5"],
+      "correctAnswer": 2,
+      "difficulty": "easy"
+    },
+    {
+      "id": 16,
+      "category": "science",
+      "question": "İnek nasıl ses çıkarır?",
+      "options": ["Hav hav", "Miyav", "Möö", "Cik cik"],
+      "correctAnswer": 2,
+      "difficulty": "easy"
+    },
+    {
+      "id": 17,
+      "category": "language",
+      "question": "Hangi harf ile başlar: Uçak",
+      "options": ["A", "E", "I", "U"],
+      "correctAnswer": 3,
+      "difficulty": "easy"
+    },
+    {
+      "id": 18,
+      "category": "math",
+      "question": "3 + 7 = ?",
+      "options": ["9", "10", "11", "12"],
+      "correctAnswer": 1,
+      "difficulty": "easy"
+    },
+    {
+      "id": 19,
+      "category": "science",
+      "question": "Hangi hayvan uçabilir?",
+      "options": ["Kedi", "Köpek", "Kuş", "Balık"],
+      "correctAnswer": 2,
+      "difficulty": "easy"
+    },
+    {
+      "id": 20,
+      "category": "cognitive",
+      "question": "Dairenin kaç köşesi vardır?",
+      "options": ["0", "1", "2", "3"],
+      "correctAnswer": 0,
+      "difficulty": "medium"
     }
   ]
 }
