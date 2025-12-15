@@ -7,12 +7,16 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.mete.egitici.activities.*
+import com.mete.egitici.fragments.*
 
 class MainActivity : AppCompatActivity() {
     
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        
+        // Load home fragment by default
+        loadFragment(HomeFragment())
         
         setupNavigation()
     }
@@ -21,20 +25,26 @@ class MainActivity : AppCompatActivity() {
         findViewById<BottomNavigationView>(R.id.bottomNavigation)?.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.nav_home -> {
-                    // Load home fragment
+                    loadFragment(HomeFragment())
                     true
                 }
                 R.id.nav_profile -> {
-                    // Load profile fragment
+                    loadFragment(ProfileFragment())
                     true
                 }
                 R.id.nav_settings -> {
-                    // Load settings fragment
+                    loadFragment(SettingsFragment())
                     true
                 }
                 else -> false
             }
         }
+    }
+    
+    private fun loadFragment(fragment: Fragment) {
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.fragmentContainer, fragment)
+            .commit()
     }
     
     fun openActivity(activityClass: Class<*>) {

@@ -3,26 +3,92 @@
     {
       "id": 1,
       "category": "language",
-      "title": "Türkçe Alfabe",
-      "topics": ["A Harfi", "B Harfi", "C Harfi"],
+      "title": "Türkçe Alfabe - A Harfi",
+      "topics": ["A harfini tanı", "A ile başlayan kelimeler", "A harfini yaz"],
       "duration": 600,
-      "difficulty": "easy"
+      "difficulty": "easy",
+      "description": "A harfini öğren ve A ile başlayan kelimeleri keşfet!"
     },
     {
       "id": 2,
-      "category": "math",
-      "title": "Sayılar 1-10",
-      "topics": ["1-5 Arası Sayılar", "6-10 Arası Sayılar"],
-      "duration": 500,
-      "difficulty": "easy"
+      "category": "language",
+      "title": "Türkçe Alfabe - B Harfi",
+      "topics": ["B harfini tanı", "B ile başlayan kelimeler", "B harfini yaz"],
+      "duration": 600,
+      "difficulty": "easy",
+      "description": "B harfini öğren ve pratik yap!"
     },
     {
       "id": 3,
-      "category": "science",
-      "title": "Hayvanlar",
-      "topics": ["Evcil Hayvanlar", "Vahşi Hayvanlar", "Deniz Hayvanları"],
+      "category": "language",
+      "title": "İngilizce ABC",
+      "topics": ["A-Z harfleri", "Telaffuz", "İngilizce kelimeler"],
+      "duration": 900,
+      "difficulty": "medium",
+      "description": "İngilizce alfabeyi öğren!"
+    },
+    {
+      "id": 4,
+      "category": "math",
+      "title": "Sayılar 1-10",
+      "topics": ["1-5 Arası Sayılar", "6-10 Arası Sayılar", "Sayma Pratiği"],
+      "duration": 500,
+      "difficulty": "easy",
+      "description": "1'den 10'a kadar sayıları öğren!"
+    },
+    {
+      "id": 5,
+      "category": "math",
+      "title": "Toplama İşlemi",
+      "topics": ["Basit toplama", "10'a kadar toplama", "Problem çözme"],
       "duration": 700,
-      "difficulty": "medium"
+      "difficulty": "medium",
+      "description": "Toplama işlemini öğren ve pratik yap!"
+    },
+    {
+      "id": 6,
+      "category": "math",
+      "title": "Geometrik Şekiller",
+      "topics": ["Daire", "Kare", "Üçgen", "Dikdörtgen"],
+      "duration": 600,
+      "difficulty": "easy",
+      "description": "Temel geometrik şekilleri tanı!"
+    },
+    {
+      "id": 7,
+      "category": "science",
+      "title": "Evcil Hayvanlar",
+      "topics": ["Kedi", "Köpek", "Kuş", "Balık"],
+      "duration": 700,
+      "difficulty": "easy",
+      "description": "Evcil hayvanları tanı ve seslerini öğren!"
+    },
+    {
+      "id": 8,
+      "category": "science",
+      "title": "Vahşi Hayvanlar",
+      "topics": ["Aslan", "Fil", "Zürafa", "Maymun"],
+      "duration": 700,
+      "difficulty": "easy",
+      "description": "Vahşi hayvanları keşfet!"
+    },
+    {
+      "id": 9,
+      "category": "science",
+      "title": "Mevsimler",
+      "topics": ["İlkbahar", "Yaz", "Sonbahar", "Kış"],
+      "duration": 600,
+      "difficulty": "medium",
+      "description": "Dört mevsimi öğren!"
+    },
+    {
+      "id": 10,
+      "category": "cognitive",
+      "title": "Renkler",
+      "topics": ["Ana renkler", "Renk karışımı", "Renk eşleştirme"],
+      "duration": 500,
+      "difficulty": "easy",
+      "description": "Renkleri öğren ve eşleştir!"
     }
   ]
 }

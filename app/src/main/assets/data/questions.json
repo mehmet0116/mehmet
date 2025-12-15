@@ -15,6 +15,70 @@
       "options": ["A", "B", "C", "D"],
       "correctAnswer": 0,
       "difficulty": "easy"
+    },
+    {
+      "id": 3,
+      "category": "math",
+      "question": "5 + 3 = ?",
+      "options": ["6", "7", "8", "9"],
+      "correctAnswer": 2,
+      "difficulty": "easy"
+    },
+    {
+      "id": 4,
+      "category": "language",
+      "question": "Hangi harf ile başlar: Elma",
+      "options": ["A", "E", "İ", "O"],
+      "correctAnswer": 1,
+      "difficulty": "easy"
+    },
+    {
+      "id": 5,
+      "category": "math",
+      "question": "10 - 3 = ?",
+      "options": ["5", "6", "7", "8"],
+      "correctAnswer": 2,
+      "difficulty": "medium"
+    },
+    {
+      "id": 6,
+      "category": "science",
+      "question": "Kedi nasıl ses çıkarır?",
+      "options": ["Hav hav", "Miyav", "Cik cik", "Möö"],
+      "correctAnswer": 1,
+      "difficulty": "easy"
+    },
+    {
+      "id": 7,
+      "category": "science",
+      "question": "Kaç mevsim vardır?",
+      "options": ["2", "3", "4", "5"],
+      "correctAnswer": 2,
+      "difficulty": "easy"
+    },
+    {
+      "id": 8,
+      "category": "math",
+      "question": "Hangi sayı daha büyük?",
+      "options": ["5", "8", "3", "6"],
+      "correctAnswer": 1,
+      "difficulty": "easy"
+    },
+    {
+      "id": 9,
+      "category": "cognitive",
+      "question": "Hangi renk ana renktir?",
+      "options": ["Mor", "Kırmızı", "Turuncu", "Yeşil"],
+      "correctAnswer": 1,
+      "difficulty": "medium"
+    },
+    {
+      "id": 10,
+      "category": "cognitive",
+      "question": "Üçgenin kaç köşesi vardır?",
+      "options": ["2", "3", "4", "5"],
+      "correctAnswer": 1,
+      "difficulty": "medium"
     }
   ]
 }
