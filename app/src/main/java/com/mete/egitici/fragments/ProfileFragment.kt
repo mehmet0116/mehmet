@@ -163,6 +163,16 @@ class ProfileFragment : Fragment() {
                 startActivity(Intent(requireContext(), com.mete.egitici.activities.StatisticsActivity::class.java))
             }
         })
+        
+        // Leaderboard button
+        buttonsContainer.addView(Button(requireContext()).apply {
+            text = "🏆 Liderlik Tablosu"
+            textSize = 18f
+            setPadding(16, 16, 16, 16)
+            setOnClickListener {
+                startActivity(Intent(requireContext(), com.mete.egitici.activities.LeaderboardActivity::class.java))
+            }
+        })
 
         val parent = view as? ViewGroup
         parent?.removeAllViews()

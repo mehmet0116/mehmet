@@ -1,5 +1,6 @@
 package com.mete.egitici.activities
 
+import android.graphics.Color
 import android.os.Bundle
 import android.view.ViewGroup
 import android.widget.LinearLayout
@@ -42,7 +43,7 @@ class OyunlarActivity : AppCompatActivity() {
                 LinearLayout.LayoutParams.MATCH_PARENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT
             ).apply {
-                setMargins(0, 0, 0, 24)
+                setMargins(0, 0, 0, 16)
             }
             radius = 12f
             cardElevation = 8f
@@ -76,6 +77,88 @@ class OyunlarActivity : AppCompatActivity() {
             }
         }
         layout.addView(quizButton)
+        
+        // Add Memory Game button
+        val memoryButton = androidx.cardview.widget.CardView(this).apply {
+            layoutParams = LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT
+            ).apply {
+                setMargins(0, 0, 0, 16)
+            }
+            radius = 12f
+            cardElevation = 8f
+            setCardBackgroundColor(resources.getColor(R.color.colorPrimary, null))
+            
+            val buttonLayout = LinearLayout(context).apply {
+                orientation = LinearLayout.VERTICAL
+                setPadding(32, 32, 32, 32)
+                gravity = android.view.Gravity.CENTER
+                
+                addView(TextView(context).apply {
+                    text = "🎴 Hafıza Eşleştirme"
+                    textSize = 22f
+                    setTextColor(resources.getColor(android.R.color.white, null))
+                    gravity = android.view.Gravity.CENTER
+                })
+                
+                addView(TextView(context).apply {
+                    text = "Kartları eşleştir ve hafızanı güçlendir!"
+                    textSize = 14f
+                    setTextColor(resources.getColor(android.R.color.white, null))
+                    gravity = android.view.Gravity.CENTER
+                    setPadding(0, 8, 0, 0)
+                })
+            }
+            
+            addView(buttonLayout)
+            
+            setOnClickListener {
+                startActivity(android.content.Intent(context, MemoryGameActivity::class.java))
+            }
+        }
+        layout.addView(memoryButton)
+        
+        // Add Math Quiz button
+        val mathQuizButton = androidx.cardview.widget.CardView(this).apply {
+            layoutParams = LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT
+            ).apply {
+                setMargins(0, 0, 0, 24)
+            }
+            radius = 12f
+            cardElevation = 8f
+            setCardBackgroundColor(Color.parseColor("#FF9800"))
+            
+            val buttonLayout = LinearLayout(context).apply {
+                orientation = LinearLayout.VERTICAL
+                setPadding(32, 32, 32, 32)
+                gravity = android.view.Gravity.CENTER
+                
+                addView(TextView(context).apply {
+                    text = "🔢 Matematik Quiz"
+                    textSize = 22f
+                    setTextColor(resources.getColor(android.R.color.white, null))
+                    gravity = android.view.Gravity.CENTER
+                })
+                
+                addView(TextView(context).apply {
+                    text = "Zamana karşı matematik soruları çöz!"
+                    textSize = 14f
+                    setTextColor(resources.getColor(android.R.color.white, null))
+                    gravity = android.view.Gravity.CENTER
+                    setPadding(0, 8, 0, 0)
+                })
+            }
+            
+            addView(buttonLayout)
+            
+            setOnClickListener {
+                startActivity(android.content.Intent(context, MathQuizActivity::class.java))
+            }
+        }
+        layout.addView(mathQuizButton)
         
         // Load games from JSON
         val games = loadGamesFromAssets()

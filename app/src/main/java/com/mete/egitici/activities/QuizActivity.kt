@@ -2,12 +2,14 @@ package com.mete.egitici.activities
 
 import android.graphics.Color
 import android.os.Bundle
-import android.view.ViewGroup
+import android.view.View
 import android.widget.Button
 import android.widget.LinearLayout
+import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.cardview.widget.CardView
 import com.mete.egitici.R
 import org.json.JSONObject
 
@@ -16,16 +18,30 @@ class QuizActivity : AppCompatActivity() {
     private var currentQuestionIndex = 0
     private var score = 0
     private lateinit var questions: List<QuestionData>
-    private lateinit var questionTextView: TextView
+    
+    // UI Elements
+    private lateinit var tvScore: TextView
+    private lateinit var tvQuestionCount: TextView
+    private lateinit var tvCategory: TextView
+    private lateinit var tvQuestion: TextView
     private lateinit var optionsLayout: LinearLayout
-    private lateinit var scoreTextView: TextView
+    private lateinit var progressBar: ProgressBar
+    private lateinit var feedbackLayout: LinearLayout
+    private lateinit var tvFeedback: TextView
+    private lateinit var resultsLayout: LinearLayout
+    private lateinit var tvFinalScore: TextView
+    private lateinit var tvPercentage: TextView
+    private lateinit var tvResultMessage: TextView
+    private lateinit var btnRestart: Button
+    private lateinit var btnHome: Button
     
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_quiz)
         
         setupToolbar()
         loadQuestions()
-        createUI()
+        initializeViews()
         showQuestion()
     }
     
@@ -34,46 +50,40 @@ class QuizActivity : AppCompatActivity() {
         supportActionBar?.title = "🎯 Quiz Yarışması"
     }
     
-    private fun createUI() {
-        val mainLayout = LinearLayout(this).apply {
-            orientation = LinearLayout.VERTICAL
-            layoutParams = ViewGroup.LayoutParams(
-                ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.MATCH_PARENT
-            )
-            setPadding(32, 32, 32, 32)
+    private fun initializeViews() {
+        tvScore = findViewById(R.id.tvScore)
+        tvQuestionCount = findViewById(R.id.tvQuestionCount)
+        tvCategory = findViewById(R.id.tvCategory)
+        tvQuestion = findViewById(R.id.tvQuestion)
+        optionsLayout = findViewById(R.id.optionsLayout)
+        progressBar = findViewById(R.id.progressBar)
+        feedbackLayout = findViewById(R.id.feedbackLayout)
+        tvFeedback = findViewById(R.id.tvFeedback)
+        resultsLayout = findViewById(R.id.resultsLayout)
+        tvFinalScore = findViewById(R.id.tvFinalScore)
+        tvPercentage = findViewById(R.id.tvPercentage)
+        tvResultMessage = findViewById(R.id.tvResultMessage)
+        btnRestart = findViewById(R.id.btnRestart)
+        btnHome = findViewById(R.id.btnHome)
+        
+        btnRestart.setOnClickListener {
+            restartQuiz()
         }
         
-        scoreTextView = TextView(this).apply {
-            text = "Puan: $score / ${questions.size}"
-            textSize = 18f
-            setTextColor(resources.getColor(R.color.colorPrimary, null))
-            setPadding(0, 0, 0, 24)
-        }
-        mainLayout.addView(scoreTextView)
-        
-        questionTextView = TextView(this).apply {
-            text = ""
-            textSize = 20f
-            setTextColor(Color.BLACK)
-            setPadding(0, 0, 0, 32)
-        }
-        mainLayout.addView(questionTextView)
-        
-        optionsLayout = LinearLayout(this).apply {
-            orientation = LinearLayout.VERTICAL
-            layoutParams = LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT
-            )
-        }
-        mainLayout.addView(optionsLayout)
-        
-        val scrollView = android.widget.ScrollView(this).apply {
-            addView(mainLayout)
+        btnHome.setOnClickListener {
+            finish()
         }
         
-        setContentView(scrollView)
+        updateScore()
+    }
+    
+    private fun updateScore() {
+        tvScore.text = "⭐ Puan: $score"
+        tvQuestionCount.text = "📝 Soru: ${currentQuestionIndex + 1}/${questions.size}"
+        
+        // Update progress bar
+        val progress = ((currentQuestionIndex.toFloat() / questions.size) * 100).toInt()
+        progressBar.progress = progress
     }
     
     private fun showQuestion() {
@@ -83,82 +93,150 @@ class QuizActivity : AppCompatActivity() {
         }
         
         val question = questions[currentQuestionIndex]
-        questionTextView.text = "${currentQuestionIndex + 1}. ${question.question}"
         
+        // Update UI
+        updateScore()
+        tvQuestion.text = question.question
+        
+        // Show category with emoji
+        val categoryEmoji = when(question.category) {
+            "math" -> "🔢"
+            "language" -> "📚"
+            "science" -> "🔬"
+            "cognitive" -> "🧠"
+            else -> "📖"
+        }
+        val categoryName = when(question.category) {
+            "math" -> "Matematik"
+            "language" -> "Dil"
+            "science" -> "Fen Bilgisi"
+            "cognitive" -> "Bilişsel"
+            else -> "Genel"
+        }
+        tvCategory.text = "$categoryEmoji $categoryName"
+        
+        // Hide feedback and results
+        feedbackLayout.visibility = View.GONE
+        resultsLayout.visibility = View.GONE
+        
+        // Clear and populate options
         optionsLayout.removeAllViews()
         
         question.options.forEachIndexed { index, option ->
-            val button = Button(this).apply {
-                text = option
-                textSize = 16f
-                layoutParams = LinearLayout.LayoutParams(
-                    LinearLayout.LayoutParams.MATCH_PARENT,
-                    LinearLayout.LayoutParams.WRAP_CONTENT
-                ).apply {
-                    setMargins(0, 0, 0, 16)
-                }
-                setBackgroundColor(resources.getColor(R.color.colorPrimary, null))
-                setTextColor(Color.WHITE)
-                
-                setOnClickListener {
-                    checkAnswer(index, question.correctAnswer)
-                }
-            }
-            optionsLayout.addView(button)
+            val optionCard = createOptionButton(option, index, question.correctAnswer)
+            optionsLayout.addView(optionCard)
         }
     }
     
-    private fun checkAnswer(selectedAnswer: Int, correctAnswer: Int) {
-        if (selectedAnswer == correctAnswer) {
-            score++
-            Toast.makeText(this, "✅ Doğru! Harika!", Toast.LENGTH_SHORT).show()
-        } else {
-            Toast.makeText(this, "❌ Yanlış. Doğru cevap: ${questions[currentQuestionIndex].options[correctAnswer]}", Toast.LENGTH_SHORT).show()
-        }
-        
-        scoreTextView.text = "Puan: $score / ${questions.size}"
-        
-        // Move to next question
-        currentQuestionIndex++
-        android.os.Handler(android.os.Looper.getMainLooper()).postDelayed({
-            showQuestion()
-        }, 1500)
-    }
-    
-    private fun showResults() {
-        questionTextView.text = "🎉 Quiz Tamamlandı!"
-        optionsLayout.removeAllViews()
-        
-        val resultText = TextView(this).apply {
-            text = "Toplam Puan: $score / ${questions.size}\n\n" +
-                   "Başarı Oranı: ${(score * 100 / questions.size)}%\n\n" +
-                   when {
-                       score == questions.size -> "🏆 Mükemmel! Hepsini doğru bildin!"
-                       score >= questions.size * 0.7 -> "⭐ Çok iyi! Harikasın!"
-                       score >= questions.size * 0.5 -> "👍 İyi! Daha da iyileşebilirsin!"
-                       else -> "💪 Çalışmaya devam et!"
-                   }
-            textSize = 18f
-            setTextColor(Color.BLACK)
-        }
-        optionsLayout.addView(resultText)
-        
-        val restartButton = Button(this).apply {
-            text = "Tekrar Oyna"
+    private fun createOptionButton(text: String, index: Int, correctAnswer: Int): CardView {
+        return CardView(this).apply {
             layoutParams = LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT
             ).apply {
-                setMargins(0, 32, 0, 0)
+                setMargins(0, 0, 0, 16)
             }
-            setOnClickListener {
-                currentQuestionIndex = 0
-                score = 0
-                scoreTextView.text = "Puan: 0 / ${questions.size}"
-                showQuestion()
+            radius = 12f
+            cardElevation = 4f
+            
+            val button = Button(this@QuizActivity).apply {
+                this.text = text
+                textSize = 16f
+                layoutParams = LinearLayout.LayoutParams(
+                    LinearLayout.LayoutParams.MATCH_PARENT,
+                    LinearLayout.LayoutParams.WRAP_CONTENT
+                )
+                setPadding(24, 24, 24, 24)
+                setBackgroundColor(resources.getColor(R.color.colorPrimary, null))
+                setTextColor(Color.WHITE)
+                isAllCaps = false
+                
+                setOnClickListener {
+                    checkAnswer(index, correctAnswer)
+                }
             }
+            
+            addView(button)
         }
-        optionsLayout.addView(restartButton)
+    }
+    
+    private fun checkAnswer(selectedAnswer: Int, correctAnswer: Int) {
+        // Disable all buttons to prevent multiple clicks
+        for (i in 0 until optionsLayout.childCount) {
+            val cardView = optionsLayout.getChildAt(i) as? CardView
+            cardView?.getChildAt(0)?.isEnabled = false
+        }
+        
+        val isCorrect = selectedAnswer == correctAnswer
+        
+        // Show feedback
+        feedbackLayout.visibility = View.VISIBLE
+        if (isCorrect) {
+            score++
+            tvFeedback.text = "✅ Harika! Doğru cevap!"
+            tvFeedback.setTextColor(Color.parseColor("#4CAF50"))
+        } else {
+            val correctOption = questions[currentQuestionIndex].options[correctAnswer]
+            tvFeedback.text = "❌ Yanlış! Doğru cevap: $correctOption"
+            tvFeedback.setTextColor(Color.parseColor("#F44336"))
+        }
+        
+        // Update score display
+        updateScore()
+        
+        // Move to next question after delay
+        currentQuestionIndex++
+        android.os.Handler(android.os.Looper.getMainLooper()).postDelayed({
+            showQuestion()
+        }, 2000)
+    }
+    
+    private fun showResults() {
+        // Hide question UI
+        tvQuestion.visibility = View.GONE
+        tvCategory.visibility = View.GONE
+        optionsLayout.visibility = View.GONE
+        feedbackLayout.visibility = View.GONE
+        
+        // Show results
+        resultsLayout.visibility = View.VISIBLE
+        
+        val percentage = (score * 100) / questions.size
+        
+        tvFinalScore.text = "Toplam Puan: $score / ${questions.size}"
+        tvPercentage.text = "Başarı Oranı: $percentage%"
+        
+        val (message, emoji) = when {
+            score == questions.size -> "Mükemmel! Hepsini doğru bildin!" to "🏆"
+            percentage >= 80 -> "Harika! Çok başarılısın!" to "⭐"
+            percentage >= 60 -> "İyi! Başarılısın!" to "👍"
+            percentage >= 40 -> "Fena değil! Biraz daha çalışmalısın." to "💪"
+            else -> "Çalışmaya devam et! Başarırsın!" to "📚"
+        }
+        
+        tvResultMessage.text = "$emoji $message"
+        
+        // Update progress to 100%
+        progressBar.progress = 100
+    }
+    
+    private fun restartQuiz() {
+        // Reset quiz state
+        currentQuestionIndex = 0
+        score = 0
+        
+        // Show question UI
+        tvQuestion.visibility = View.VISIBLE
+        tvCategory.visibility = View.VISIBLE
+        optionsLayout.visibility = View.VISIBLE
+        resultsLayout.visibility = View.GONE
+        feedbackLayout.visibility = View.GONE
+        
+        // Reset progress
+        progressBar.progress = 0
+        
+        // Show first question
+        showQuestion()
     }
     
     private fun loadQuestions() {
