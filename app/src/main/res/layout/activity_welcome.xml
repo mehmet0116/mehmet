@@ -9,7 +9,7 @@
         android:id="@+id/tvWelcome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Mete'ye Hoş Geldin!"
+        android:text="@string/msg_welcome_mete"
         android:textSize="32sp"
         android:textStyle="bold"
         android:textColor="@android:color/white"
