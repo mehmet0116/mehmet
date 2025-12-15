@@ -140,7 +140,7 @@ class QuizActivity : AppCompatActivity() {
             cardElevation = 4f
             
             val button = Button(this@QuizActivity).apply {
-                text = this@apply.text
+                this.text = text
                 textSize = 16f
                 layoutParams = LinearLayout.LayoutParams(
                     LinearLayout.LayoutParams.MATCH_PARENT,

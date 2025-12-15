@@ -20,6 +20,8 @@ class LeaderboardActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         
+        database = AppDatabase.getDatabase(this)
+        
         setupToolbar()
         createUI()
         loadLeaderboard()

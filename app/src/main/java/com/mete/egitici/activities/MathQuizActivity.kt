@@ -218,7 +218,11 @@ class MathQuizActivity : AppCompatActivity() {
 
             override fun onFinish() {
                 tvTimer.text = "⏱️ 0s"
-                checkAnswer(-1, question.options.indexOf(questions[currentQuestionIndex].answer.toString()))
+                if (currentQuestionIndex < questions.size) {
+                    val currentQuestion = questions[currentQuestionIndex]
+                    val correctIndex = currentQuestion.options.indexOf(currentQuestion.answer.toString())
+                    checkAnswer(-1, correctIndex)
+                }
             }
         }.start()
     }
