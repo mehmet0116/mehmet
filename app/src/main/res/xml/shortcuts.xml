@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
+    <shortcut
+        android:shortcutId="games"
+        android:enabled="true"
+        android:icon="@drawable/ic_games"
+        android:shortcutShortLabel="@string/title_games"
+        android:shortcutLongLabel="@string/title_games">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetPackage="com.mete.egitici"
+            android:targetClass="com.mete.egitici.activities.OyunlarActivity" />
+    </shortcut>
+</shortcuts>

@@ -1,0 +1,28 @@
+{
+  "lessons": [
+    {
+      "id": 1,
+      "category": "language",
+      "title": "Türkçe Alfabe",
+      "topics": ["A Harfi", "B Harfi", "C Harfi"],
+      "duration": 600,
+      "difficulty": "easy"
+    },
+    {
+      "id": 2,
+      "category": "math",
+      "title": "Sayılar 1-10",
+      "topics": ["1-5 Arası Sayılar", "6-10 Arası Sayılar"],
+      "duration": 500,
+      "difficulty": "easy"
+    },
+    {
+      "id": 3,
+      "category": "science",
+      "title": "Hayvanlar",
+      "topics": ["Evcil Hayvanlar", "Vahşi Hayvanlar", "Deniz Hayvanları"],
+      "duration": 700,
+      "difficulty": "medium"
+    }
+  ]
+}

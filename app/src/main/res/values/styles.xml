@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Base application theme -->
+    <style name="Base.Theme.MeteEgitici" parent="Theme.Material3.Light.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryVariant">@color/colorPrimaryDark</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorSecondary">@color/colorAccent</item>
+        <item name="android:statusBarColor">@color/colorPrimary</item>
+    </style>
+
+    <style name="Theme.MeteEgitici" parent="Base.Theme.MeteEgitici" />
+    
+    <!-- Splash theme -->
+    <style name="Theme.MeteEgitici.Splash" parent="Theme.MeteEgitici">
+        <item name="android:windowBackground">@drawable/bg_gradient</item>
+        <item name="android:windowFullscreen">true</item>
+    </style>
+    
+    <!-- Button style -->
+    <style name="RoundedButton">
+        <item name="android:background">@drawable/btn_rounded</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:padding">12dp</item>
+    </style>
+</resources>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/menu_restart"
+        android:title="Yeniden Başlat" />
+    <item
+        android:id="@+id/menu_hint"
+        android:title="İpucu" />
+    <item
+        android:id="@+id/menu_exit"
+        android:title="Çıkış" />
+</menu>

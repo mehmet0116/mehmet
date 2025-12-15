@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="animation_duration_short">200</integer>
+    <integer name="animation_duration_medium">400</integer>
+    <integer name="animation_duration_long">600</integer>
+    <integer name="splash_timeout">3000</integer>
+</resources>

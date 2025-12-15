@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Mete Eğitici Çocuk Uygulaması</string>
+    
+    <!-- Activity titles -->
+    <string name="title_splash">Hoş Geldin</string>
+    <string name="title_welcome">Mete\'ye Hoş Geldin!</string>
+    <string name="title_main">Ana Sayfa</string>
+    <string name="title_language">Dil Gelişimi</string>
+    <string name="title_math">Matematik</string>
+    <string name="title_cognitive">Bilişsel Gelişim</string>
+    <string name="title_creativity">Yaratıcılık</string>
+    <string name="title_science">Fen Bilgisi</string>
+    <string name="title_social">Sosyal Gelişim</string>
+    <string name="title_games">Oyunlar</string>
+    <string name="title_parent">Ebeveyn Kontrol</string>
+    
+    <!-- Navigation -->
+    <string name="nav_home">Ana Sayfa</string>
+    <string name="nav_profile">Profil</string>
+    <string name="nav_settings">Ayarlar</string>
+    
+    <!-- Buttons -->
+    <string name="btn_start">Başla</string>
+    <string name="btn_ok">Tamam</string>
+    <string name="btn_cancel">İptal</string>
+    <string name="btn_next">İleri</string>
+    <string name="btn_back">Geri</string>
+    
+    <!-- Messages -->
+    <string name="msg_loading">Yükleniyor…</string>
+    <string name="msg_welcome">Hoş geldin %s!</string>
+    <string name="msg_good_job">Aferin!</string>
+    <string name="msg_try_again">Tekrar dene!</string>
+</resources>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="difficulty_levels">
+        <item>Kolay</item>
+        <item>Orta</item>
+        <item>Zor</item>
+    </string-array>
+    
+    <string-array name="age_groups">
+        <item>3-4 Yaş</item>
+        <item>5-6 Yaş</item>
+        <item>7-8 Yaş</item>
+    </string-array>
+    
+    <string-array name="themes">
+        <item>Doğa</item>
+        <item>Uzay</item>
+        <item>Deniz</item>
+        <item>Orman</item>
+        <item>Şehir</item>
+    </string-array>
+</resources>
