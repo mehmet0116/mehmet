@@ -4,13 +4,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
-import android.widget.Switch
-import android.widget.TextView
+import android.widget.*
 import androidx.fragment.app.Fragment
 import com.mete.egitici.R
+import com.mete.egitici.utils.PreferencesHelper
 
 class SettingsFragment : Fragment() {
+    
+    private lateinit var preferencesHelper: PreferencesHelper
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -18,6 +19,7 @@ class SettingsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_settings, container, false)
+        preferencesHelper = PreferencesHelper(requireContext())
         setupSettings(view)
         return view
     }
@@ -40,55 +42,183 @@ class SettingsFragment : Fragment() {
             setTextColor(resources.getColor(android.R.color.black, null))
         })
 
-        // Sound Settings
-        layout.addView(createSetting("🔊 Ses Efektleri", true))
-        layout.addView(createSetting("🎵 Arka Plan Müziği", true))
-        
-        // Display Settings
+        // Sound Settings Section
         layout.addView(TextView(requireContext()).apply {
-            text = "\n📱 Görünüm"
-            textSize = 18f
-            setPadding(0, 16, 0, 8)
-            setTextColor(resources.getColor(android.R.color.black, null))
-        })
-        layout.addView(createSetting("🌙 Karanlık Mod", false))
-        layout.addView(createSetting("♿ Erişilebilirlik Modu", false))
-        
-        // Difficulty
-        layout.addView(TextView(requireContext()).apply {
-            text = "\n🎯 Zorluk Seviyesi: Orta"
-            textSize = 16f
-            setPadding(0, 16, 0, 8)
+            text = "🔊 Ses Ayarları"
+            textSize = 20f
+            textStyle = android.graphics.Typeface.BOLD
+            setPadding(0, 16, 0, 12)
             setTextColor(resources.getColor(android.R.color.black, null))
         })
         
-        // Parent Control
+        layout.addView(createSetting(
+            "🔊 Ses Efektleri",
+            preferencesHelper.isSoundEffectsEnabled()
+        ) { enabled ->
+            preferencesHelper.setSoundEffectsEnabled(enabled)
+        })
+        
+        layout.addView(createSetting(
+            "🎵 Arka Plan Müziği",
+            preferencesHelper.isBackgroundMusicEnabled()
+        ) { enabled ->
+            preferencesHelper.setBackgroundMusicEnabled(enabled)
+        })
+        
+        // Volume Control
+        layout.addView(TextView(requireContext()).apply {
+            text = "Ses Seviyesi"
+            textSize = 14f
+            setPadding(0, 16, 0, 8)
+            setTextColor(resources.getColor(android.R.color.darker_gray, null))
+        })
+        
+        layout.addView(SeekBar(requireContext()).apply {
+            max = 100
+            progress = (preferencesHelper.getVolume() * 100).toInt()
+            setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
+                override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
+                    preferencesHelper.setVolume(progress / 100f)
+                }
+                override fun onStartTrackingTouch(seekBar: SeekBar?) {}
+                override fun onStopTrackingTouch(seekBar: SeekBar?) {}
+            })
+        })
+        
+        // Animation Settings Section
+        layout.addView(TextView(requireContext()).apply {
+            text = "\n✨ Animasyon Ayarları"
+            textSize = 20f
+            textStyle = android.graphics.Typeface.BOLD
+            setPadding(0, 16, 0, 12)
+            setTextColor(resources.getColor(android.R.color.black, null))
+        })
+        
+        layout.addView(createSetting(
+            "🎬 Animasyonlar",
+            preferencesHelper.isAnimationsEnabled()
+        ) { enabled ->
+            preferencesHelper.setAnimationsEnabled(enabled)
+        })
+        
+        layout.addView(createSetting(
+            "⭐ Parti Efektleri",
+            preferencesHelper.isParticleEffectsEnabled()
+        ) { enabled ->
+            preferencesHelper.setParticleEffectsEnabled(enabled)
+        })
+        
+        // Display Settings Section
+        layout.addView(TextView(requireContext()).apply {
+            text = "\n📱 Görünüm Ayarları"
+            textSize = 20f
+            textStyle = android.graphics.Typeface.BOLD
+            setPadding(0, 16, 0, 12)
+            setTextColor(resources.getColor(android.R.color.black, null))
+        })
+        
+        layout.addView(createSetting(
+            "🌙 Karanlık Mod",
+            preferencesHelper.isDarkModeEnabled()
+        ) { enabled ->
+            preferencesHelper.setDarkModeEnabled(enabled)
+            Toast.makeText(requireContext(), "Uygulamayı yeniden başlatın", Toast.LENGTH_SHORT).show()
+        })
+        
+        // Text Size
+        layout.addView(TextView(requireContext()).apply {
+            text = "\nMetin Boyutu"
+            textSize = 14f
+            setPadding(0, 16, 0, 8)
+            setTextColor(resources.getColor(android.R.color.darker_gray, null))
+        })
+        
+        layout.addView(createTextSizeSelector())
+        
+        // Accessibility Settings Section
+        layout.addView(TextView(requireContext()).apply {
+            text = "\n♿ Erişilebilirlik"
+            textSize = 20f
+            textStyle = android.graphics.Typeface.BOLD
+            setPadding(0, 16, 0, 12)
+            setTextColor(resources.getColor(android.R.color.black, null))
+        })
+        
+        layout.addView(createSetting(
+            "♿ Erişilebilirlik Modu",
+            preferencesHelper.isAccessibilityModeEnabled()
+        ) { enabled ->
+            preferencesHelper.setAccessibilityModeEnabled(enabled)
+        })
+        
+        layout.addView(createSetting(
+            "🎨 Yüksek Kontrast",
+            preferencesHelper.isHighContrastEnabled()
+        ) { enabled ->
+            preferencesHelper.setHighContrastEnabled(enabled)
+        })
+        
+        // Parental Control Section
         layout.addView(TextView(requireContext()).apply {
             text = "\n👨‍👩‍👧 Ebeveyn Kontrolü"
-            textSize = 18f
-            setPadding(0, 16, 0, 8)
+            textSize = 20f
+            textStyle = android.graphics.Typeface.BOLD
+            setPadding(0, 16, 0, 12)
             setTextColor(resources.getColor(android.R.color.black, null))
         })
+        
+        layout.addView(createSetting(
+            "⏱️ Süre Sınırlaması",
+            preferencesHelper.isTimeLimitEnabled()
+        ) { enabled ->
+            preferencesHelper.setTimeLimitEnabled(enabled)
+        })
+        
         layout.addView(TextView(requireContext()).apply {
-            text = "⏱️ Günlük Kullanım Süresi: 60 dakika"
+            text = "Günlük Kullanım Süresi: ${preferencesHelper.getDailyTimeLimit()} dakika"
             textSize = 14f
             setPadding(0, 8, 0, 8)
             setTextColor(resources.getColor(android.R.color.darker_gray, null))
         })
+        
+        // Notifications Section
+        layout.addView(TextView(requireContext()).apply {
+            text = "\n🔔 Bildirimler"
+            textSize = 20f
+            textStyle = android.graphics.Typeface.BOLD
+            setPadding(0, 16, 0, 12)
+            setTextColor(resources.getColor(android.R.color.black, null))
+        })
+        
+        layout.addView(createSetting(
+            "🔔 Bildirimler",
+            preferencesHelper.isNotificationsEnabled()
+        ) { enabled ->
+            preferencesHelper.setNotificationsEnabled(enabled)
+        })
+        
+        layout.addView(createSetting(
+            "📅 Günlük Hatırlatmalar",
+            preferencesHelper.isDailyRemindersEnabled()
+        ) { enabled ->
+            preferencesHelper.setDailyRemindersEnabled(enabled)
+        })
 
         val parent = view as? ViewGroup
         parent?.removeAllViews()
-        parent?.addView(layout)
+        parent?.addView(ScrollView(requireContext()).apply {
+            addView(layout)
+        })
     }
 
-    private fun createSetting(title: String, checked: Boolean): LinearLayout {
+    private fun createSetting(title: String, checked: Boolean, onCheckedChange: (Boolean) -> Unit): LinearLayout {
         return LinearLayout(requireContext()).apply {
             orientation = LinearLayout.HORIZONTAL
             layoutParams = LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT
             )
-            setPadding(0, 8, 0, 8)
+            setPadding(0, 12, 0, 12)
 
             addView(TextView(requireContext()).apply {
                 text = title
@@ -103,7 +233,30 @@ class SettingsFragment : Fragment() {
 
             addView(Switch(requireContext()).apply {
                 isChecked = checked
+                setOnCheckedChangeListener { _, isChecked ->
+                    onCheckedChange(isChecked)
+                }
             })
+        }
+    }
+    
+    private fun createTextSizeSelector(): RadioGroup {
+        return RadioGroup(requireContext()).apply {
+            orientation = RadioGroup.HORIZONTAL
+            
+            val textSizes = listOf("Küçük", "Orta", "Büyük")
+            val currentSize = preferencesHelper.getTextSize()
+            
+            textSizes.forEachIndexed { index, size ->
+                addView(RadioButton(requireContext()).apply {
+                    text = size
+                    id = index
+                    isChecked = currentSize == index
+                    setOnClickListener {
+                        preferencesHelper.setTextSize(index)
+                    }
+                })
+            }
         }
     }
 }
