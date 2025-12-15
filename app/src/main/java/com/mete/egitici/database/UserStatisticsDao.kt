@@ -47,4 +47,12 @@ interface UserStatisticsDao {
     
     @Query("UPDATE user_statistics SET level = :level, experiencePoints = :xp WHERE userId = :userId")
     suspend fun updateLevelAndXP(level: Int, xp: Int, userId: String = "default_user")
+
+    // Varsayılan kullanıcı için sil
+    @Query("DELETE FROM user_statistics WHERE userId = :userId")
+    suspend fun deleteAll(userId: String = "default_user")
+
+    // Tüm satırları sil (parametresiz)
+    @Query("DELETE FROM user_statistics")
+    suspend fun deleteAllStatistics()
 }

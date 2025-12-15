@@ -8,6 +8,7 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
 import androidx.lifecycle.lifecycleScope
+import androidx.core.content.ContextCompat
 import com.mete.egitici.R
 import com.mete.egitici.database.AppDatabase
 import kotlinx.coroutines.launch
@@ -40,7 +41,7 @@ class LeaderboardActivity : AppCompatActivity() {
                 LinearLayout.LayoutParams.MATCH_PARENT
             )
             setPadding(16, 16, 16, 16)
-            setBackgroundColor(resources.getColor(android.R.color.white, null))
+            setBackgroundColor(ContextCompat.getColor(this@LeaderboardActivity, android.R.color.white))
         }
 
         // Header
@@ -48,7 +49,7 @@ class LeaderboardActivity : AppCompatActivity() {
             text = "🌟 En İyi Skorlar 🌟"
             textSize = 24f
             gravity = Gravity.CENTER
-            setTextColor(resources.getColor(R.color.colorPrimary, null))
+            setTextColor(ContextCompat.getColor(this@LeaderboardActivity, R.color.colorPrimary))
             setPadding(0, 16, 0, 24)
         }
         mainLayout.addView(header)
@@ -111,7 +112,7 @@ class LeaderboardActivity : AppCompatActivity() {
                     textSize = 18f
                     gravity = Gravity.CENTER
                     setPadding(32, 64, 32, 64)
-                    setTextColor(resources.getColor(android.R.color.darker_gray, null))
+                    setTextColor(ContextCompat.getColor(this@LeaderboardActivity, android.R.color.darker_gray))
                 })
             }
         }
@@ -133,7 +134,7 @@ class LeaderboardActivity : AppCompatActivity() {
                 1 -> android.graphics.Color.parseColor("#FFD700") // Gold
                 2 -> android.graphics.Color.parseColor("#C0C0C0") // Silver
                 3 -> android.graphics.Color.parseColor("#CD7F32") // Bronze
-                else -> resources.getColor(android.R.color.white, null)
+                else -> ContextCompat.getColor(this@LeaderboardActivity, android.R.color.white)
             }
             setCardBackgroundColor(bgColor)
         }
@@ -148,7 +149,7 @@ class LeaderboardActivity : AppCompatActivity() {
         val rankText = TextView(this).apply {
             text = "#$rank"
             textSize = 20f
-            setTextColor(resources.getColor(R.color.colorPrimary, null))
+            setTextColor(ContextCompat.getColor(this@LeaderboardActivity, R.color.colorPrimary))
             layoutParams = LinearLayout.LayoutParams(80, LinearLayout.LayoutParams.WRAP_CONTENT)
         }
         itemLayout.addView(rankText)
@@ -166,13 +167,13 @@ class LeaderboardActivity : AppCompatActivity() {
         infoLayout.addView(TextView(this).apply {
             text = title
             textSize = 16f
-            setTextColor(resources.getColor(android.R.color.black, null))
+            setTextColor(ContextCompat.getColor(this@LeaderboardActivity, android.R.color.black))
         })
 
         infoLayout.addView(TextView(this).apply {
             text = value
             textSize = 24f
-            setTextColor(resources.getColor(R.color.colorAccent, null))
+            setTextColor(ContextCompat.getColor(this@LeaderboardActivity, R.color.colorAccent))
             setPadding(0, 4, 0, 0)
         })
 
@@ -194,7 +195,7 @@ class LeaderboardActivity : AppCompatActivity() {
 
     private fun resetStatistics() {
         lifecycleScope.launch {
-            database.userStatisticsDao().deleteAll()
+            database.userStatisticsDao().deleteAllStatistics()
             containerLayout.removeAllViews()
             loadLeaderboard()
             android.widget.Toast.makeText(
@@ -206,7 +207,7 @@ class LeaderboardActivity : AppCompatActivity() {
     }
 
     override fun onSupportNavigateUp(): Boolean {
-        onBackPressed()
+        finish()
         return true
     }
 }
