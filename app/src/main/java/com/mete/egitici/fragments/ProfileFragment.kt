@@ -153,6 +153,16 @@ class ProfileFragment : Fragment() {
                 startActivity(Intent(requireContext(), DailyChallengeActivity::class.java))
             }
         })
+        
+        // Statistics button
+        buttonsContainer.addView(Button(requireContext()).apply {
+            text = "📊 Detaylı İstatistikler"
+            textSize = 18f
+            setPadding(16, 16, 16, 16)
+            setOnClickListener {
+                startActivity(Intent(requireContext(), com.mete.egitici.activities.StatisticsActivity::class.java))
+            }
+        })
 
         val parent = view as? ViewGroup
         parent?.removeAllViews()
