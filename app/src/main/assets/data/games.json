@@ -2,21 +2,23 @@
   "games": [
     {
       "id": 1,
-      "name": "Eşleştirme Oyunu",
+      "name": "Hafıza Eşleştirme",
       "category": "memory",
       "difficulty": "easy",
       "minAge": 3,
       "maxAge": 6,
-      "description": "Aynı resimleri eşleştir!"
+      "description": "Aynı resimleri eşleştir ve hafızanı güçlendir!",
+      "icon": "🎴"
     },
     {
       "id": 2,
-      "name": "Sayı Sayma",
+      "name": "Sayı Sayma Oyunu",
       "category": "math",
       "difficulty": "easy",
       "minAge": 4,
       "maxAge": 7,
-      "description": "Nesneleri say ve doğru sayıyı bul!"
+      "description": "Nesneleri say ve doğru sayıyı bul!",
+      "icon": "🔢"
     },
     {
       "id": 3,
@@ -25,7 +27,78 @@
       "difficulty": "medium",
       "minAge": 5,
       "maxAge": 8,
-      "description": "Kelimelerdeki harfleri bul!"
+      "description": "Kelimelerdeki harfleri bul ve öğren!",
+      "icon": "🔤"
+    },
+    {
+      "id": 4,
+      "name": "Şekil Eşleştirme",
+      "category": "cognitive",
+      "difficulty": "easy",
+      "minAge": 3,
+      "maxAge": 6,
+      "description": "Geometrik şekilleri eşleştir!",
+      "icon": "🔷"
+    },
+    {
+      "id": 5,
+      "name": "Renk Öğrenme",
+      "category": "cognitive",
+      "difficulty": "easy",
+      "minAge": 3,
+      "maxAge": 5,
+      "description": "Renkleri öğren ve eşleştir!",
+      "icon": "🌈"
+    },
+    {
+      "id": 6,
+      "name": "Hayvan Sesleri",
+      "category": "science",
+      "difficulty": "easy",
+      "minAge": 3,
+      "maxAge": 6,
+      "description": "Hayvan seslerini dinle ve tahmin et!",
+      "icon": "🐾"
+    },
+    {
+      "id": 7,
+      "name": "Puzzle Yapboz",
+      "category": "cognitive",
+      "difficulty": "medium",
+      "minAge": 4,
+      "maxAge": 8,
+      "description": "Resimleri tamamla ve yapboz yap!",
+      "icon": "🧩"
+    },
+    {
+      "id": 8,
+      "name": "Matematik Quiz",
+      "category": "math",
+      "difficulty": "medium",
+      "minAge": 5,
+      "maxAge": 8,
+      "description": "Toplama ve çıkarma sorularını çöz!",
+      "icon": "➕"
+    },
+    {
+      "id": 9,
+      "name": "Boyama Kitabı",
+      "category": "art",
+      "difficulty": "easy",
+      "minAge": 3,
+      "maxAge": 8,
+      "description": "Resimleri istediğin gibi boya!",
+      "icon": "🎨"
+    },
+    {
+      "id": 10,
+      "name": "Labirent Oyunu",
+      "category": "cognitive",
+      "difficulty": "hard",
+      "minAge": 6,
+      "maxAge": 8,
+      "description": "Labirentte yolunu bul!",
+      "icon": "🎯"
     }
   ]
 }

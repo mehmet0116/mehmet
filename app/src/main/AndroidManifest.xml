@@ -85,6 +85,11 @@
             android:exported="false"
             android:screenOrientation="portrait" />
             
+        <activity
+            android:name=".activities.QuizActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+            
         <service
             android:name=".services.BackgroundMusicService"
             android:exported="false" />
