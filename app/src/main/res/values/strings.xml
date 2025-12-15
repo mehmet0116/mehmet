@@ -30,6 +30,21 @@
     <!-- Messages -->
     <string name="msg_loading">Yükleniyor…</string>
     <string name="msg_welcome">Hoş geldin %s!</string>
+    <string name="msg_welcome_mete">Hoşgeldin Mete!</string>
     <string name="msg_good_job">Aferin!</string>
     <string name="msg_try_again">Tekrar dene!</string>
+    
+    <!-- Motivational Messages for Correct Answers -->
+    <string name="msg_bravo_mete">Bravo Mete!</string>
+    <string name="msg_excellent_mete">Mükemmel Mete!</string>
+    <string name="msg_great_job_mete">Harika iş Mete!</string>
+    <string name="msg_super_mete">Süper Mete!</string>
+    <string name="msg_well_done_mete">Çok iyi Mete!</string>
+    
+    <!-- Motivational Messages for Wrong Answers -->
+    <string name="msg_keep_trying_mete">Devam et Mete, başaracaksın!</string>
+    <string name="msg_try_once_more_mete">Bir daha dene Mete, neredeyse oldu!</string>
+    <string name="msg_dont_give_up_mete">Pes etme Mete, sen yaparsın!</string>
+    <string name="msg_almost_there_mete">Neredeyse Mete, tekrar dene!</string>
+    <string name="msg_you_can_do_it_mete">Sen yaparsın Mete, bir kez daha!</string>
 </resources>
