@@ -5,10 +5,22 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
-@Database(entities = [UserProgressEntity::class], version = 1, exportSchema = false)
+@Database(
+    entities = [
+        UserProgressEntity::class,
+        AchievementEntity::class,
+        DailyChallengeEntity::class,
+        UserStatisticsEntity::class
+    ],
+    version = 2,
+    exportSchema = false
+)
 abstract class AppDatabase : RoomDatabase() {
     
     abstract fun userProgressDao(): UserProgressDao
+    abstract fun achievementDao(): AchievementDao
+    abstract fun dailyChallengeDao(): DailyChallengeDao
+    abstract fun userStatisticsDao(): UserStatisticsDao
     
     companion object {
         @Volatile
@@ -20,7 +32,9 @@ abstract class AppDatabase : RoomDatabase() {
                     context.applicationContext,
                     AppDatabase::class.java,
                     "mete_database"
-                ).build()
+                )
+                .fallbackToDestructiveMigration() // Allow destructive migration for now
+                .build()
                 INSTANCE = instance
                 instance
             }
