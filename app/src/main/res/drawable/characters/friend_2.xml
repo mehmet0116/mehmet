@@ -14,7 +14,6 @@
         android:fillColor="@color/black"
         android:pathData="M40,28m-3,0a3,3 0,1 1,6 0a3,3 0,1 1,-6 0"/>
     <path
-        android:fillColor="@color/black"
         android:pathData="M22,38 Q32,44 42,38"
         android:strokeWidth="2"
         android:strokeColor="@color/black"
