@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.mete.egitici.R
 import com.mete.egitici.utils.PreferencesHelper
@@ -39,16 +40,16 @@ class SettingsFragment : Fragment() {
             text = "⚙️ Ayarlar"
             textSize = 24f
             setPadding(0, 0, 0, 32)
-            setTextColor(resources.getColor(android.R.color.black, null))
+            setTextColor(ContextCompat.getColor(requireContext(), android.R.color.black))
         })
 
         // Sound Settings Section
         layout.addView(TextView(requireContext()).apply {
             text = "🔊 Ses Ayarları"
             textSize = 20f
-            textStyle = android.graphics.Typeface.BOLD
+            setTypeface(null, android.graphics.Typeface.BOLD)
             setPadding(0, 16, 0, 12)
-            setTextColor(resources.getColor(android.R.color.black, null))
+            setTextColor(ContextCompat.getColor(requireContext(), android.R.color.black))
         })
         
         layout.addView(createSetting(
@@ -70,7 +71,7 @@ class SettingsFragment : Fragment() {
             text = "Ses Seviyesi"
             textSize = 14f
             setPadding(0, 16, 0, 8)
-            setTextColor(resources.getColor(android.R.color.darker_gray, null))
+            setTextColor(ContextCompat.getColor(requireContext(), android.R.color.darker_gray))
         })
         
         layout.addView(SeekBar(requireContext()).apply {
@@ -89,9 +90,9 @@ class SettingsFragment : Fragment() {
         layout.addView(TextView(requireContext()).apply {
             text = "\n✨ Animasyon Ayarları"
             textSize = 20f
-            textStyle = android.graphics.Typeface.BOLD
+            setTypeface(null, android.graphics.Typeface.BOLD)
             setPadding(0, 16, 0, 12)
-            setTextColor(resources.getColor(android.R.color.black, null))
+            setTextColor(ContextCompat.getColor(requireContext(), android.R.color.black))
         })
         
         layout.addView(createSetting(
@@ -112,9 +113,9 @@ class SettingsFragment : Fragment() {
         layout.addView(TextView(requireContext()).apply {
             text = "\n📱 Görünüm Ayarları"
             textSize = 20f
-            textStyle = android.graphics.Typeface.BOLD
+            setTypeface(null, android.graphics.Typeface.BOLD)
             setPadding(0, 16, 0, 12)
-            setTextColor(resources.getColor(android.R.color.black, null))
+            setTextColor(ContextCompat.getColor(requireContext(), android.R.color.black))
         })
         
         layout.addView(createSetting(
@@ -130,7 +131,7 @@ class SettingsFragment : Fragment() {
             text = "\nMetin Boyutu"
             textSize = 14f
             setPadding(0, 16, 0, 8)
-            setTextColor(resources.getColor(android.R.color.darker_gray, null))
+            setTextColor(ContextCompat.getColor(requireContext(), android.R.color.darker_gray))
         })
         
         layout.addView(createTextSizeSelector())
@@ -139,9 +140,9 @@ class SettingsFragment : Fragment() {
         layout.addView(TextView(requireContext()).apply {
             text = "\n♿ Erişilebilirlik"
             textSize = 20f
-            textStyle = android.graphics.Typeface.BOLD
+            setTypeface(null, android.graphics.Typeface.BOLD)
             setPadding(0, 16, 0, 12)
-            setTextColor(resources.getColor(android.R.color.black, null))
+            setTextColor(ContextCompat.getColor(requireContext(), android.R.color.black))
         })
         
         layout.addView(createSetting(
@@ -162,9 +163,9 @@ class SettingsFragment : Fragment() {
         layout.addView(TextView(requireContext()).apply {
             text = "\n👨‍👩‍👧 Ebeveyn Kontrolü"
             textSize = 20f
-            textStyle = android.graphics.Typeface.BOLD
+            setTypeface(null, android.graphics.Typeface.BOLD)
             setPadding(0, 16, 0, 12)
-            setTextColor(resources.getColor(android.R.color.black, null))
+            setTextColor(ContextCompat.getColor(requireContext(), android.R.color.black))
         })
         
         layout.addView(createSetting(
@@ -178,16 +179,16 @@ class SettingsFragment : Fragment() {
             text = "Günlük Kullanım Süresi: ${preferencesHelper.getDailyTimeLimit()} dakika"
             textSize = 14f
             setPadding(0, 8, 0, 8)
-            setTextColor(resources.getColor(android.R.color.darker_gray, null))
+            setTextColor(ContextCompat.getColor(requireContext(), android.R.color.darker_gray))
         })
         
         // Notifications Section
         layout.addView(TextView(requireContext()).apply {
             text = "\n🔔 Bildirimler"
             textSize = 20f
-            textStyle = android.graphics.Typeface.BOLD
+            setTypeface(null, android.graphics.Typeface.BOLD)
             setPadding(0, 16, 0, 12)
-            setTextColor(resources.getColor(android.R.color.black, null))
+            setTextColor(ContextCompat.getColor(requireContext(), android.R.color.black))
         })
         
         layout.addView(createSetting(
@@ -228,7 +229,7 @@ class SettingsFragment : Fragment() {
                     LinearLayout.LayoutParams.WRAP_CONTENT,
                     1f
                 )
-                setTextColor(resources.getColor(android.R.color.black, null))
+                setTextColor(ContextCompat.getColor(requireContext(), android.R.color.black))
             })
 
             addView(Switch(requireContext()).apply {

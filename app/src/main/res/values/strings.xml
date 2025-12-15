@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Mete Eğitici Çocuk Uygulaması</string>
+    <string name="app_name">METE</string>
     
     <!-- Activity titles -->
     <string name="title_splash">Hoş Geldin</string>
