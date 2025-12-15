@@ -14,8 +14,10 @@ object SoundManager {
             mediaPlayer?.release()
             mediaPlayer = MediaPlayer.create(context, soundResId)
             mediaPlayer?.start()
-        } catch (e: Exception) {
-            // Sound resource not found, continue without sound
+        } catch (e: IllegalStateException) {
+            // MediaPlayer in invalid state
+        } catch (e: IllegalArgumentException) {
+            // Invalid resource
         }
     }
     
