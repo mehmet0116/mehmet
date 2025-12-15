@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#6200EE</color>
+    <color name="colorPrimaryDark">#3700B3</color>
+    <color name="colorAccent">#03DAC5</color>
+    <color name="colorBackground">#F5F5F5</color>
+    
+    <!-- Child-friendly colors -->
+    <color name="pastelBlue">#A8D8EA</color>
+    <color name="pastelPink">#FFCAD4</color>
+    <color name="pastelYellow">#FFF9A5</color>
+    <color name="pastelGreen">#B4E7CE</color>
+    <color name="pastelOrange">#FFD6A5</color>
+    <color name="pastelPurple">#D4BBDD</color>
+    
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="gray">#808080</color>
+    <color name="lightGray">#D3D3D3</color>
+</resources>

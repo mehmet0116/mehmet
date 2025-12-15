@@ -1,0 +1,31 @@
+{
+  "games": [
+    {
+      "id": 1,
+      "name": "Eşleştirme Oyunu",
+      "category": "memory",
+      "difficulty": "easy",
+      "minAge": 3,
+      "maxAge": 6,
+      "description": "Aynı resimleri eşleştir!"
+    },
+    {
+      "id": 2,
+      "name": "Sayı Sayma",
+      "category": "math",
+      "difficulty": "easy",
+      "minAge": 4,
+      "maxAge": 7,
+      "description": "Nesneleri say ve doğru sayıyı bul!"
+    },
+    {
+      "id": 3,
+      "name": "Harf Bulma",
+      "category": "language",
+      "difficulty": "medium",
+      "minAge": 5,
+      "maxAge": 8,
+      "description": "Kelimelerdeki harfleri bul!"
+    }
+  ]
+}

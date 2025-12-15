@@ -1,0 +1,20 @@
+{
+  "questions": [
+    {
+      "id": 1,
+      "category": "math",
+      "question": "2 + 2 = ?",
+      "options": ["3", "4", "5", "6"],
+      "correctAnswer": 1,
+      "difficulty": "easy"
+    },
+    {
+      "id": 2,
+      "category": "language",
+      "question": "Hangi harf ile başlar: Araba",
+      "options": ["A", "B", "C", "D"],
+      "correctAnswer": 0,
+      "difficulty": "easy"
+    }
+  ]
+}

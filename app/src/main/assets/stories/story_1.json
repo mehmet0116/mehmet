@@ -1,0 +1,11 @@
+{
+  "stories": [
+    {
+      "id": 1,
+      "title": "Orman Maceraları",
+      "content": "Bir varmış, bir yokmuş...",
+      "duration": 300,
+      "ageGroup": "3-6"
+    }
+  ]
+}

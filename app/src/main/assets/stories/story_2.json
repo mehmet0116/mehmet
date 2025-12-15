@@ -1,0 +1,11 @@
+{
+  "stories": [
+    {
+      "id": 2,
+      "title": "Uzay Yolculuğu",
+      "content": "Bir gün Mete uzaya gitmeye karar verdi...",
+      "duration": 350,
+      "ageGroup": "5-8"
+    }
+  ]
+}
